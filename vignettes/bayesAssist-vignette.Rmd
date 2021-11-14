@@ -1,0 +1,33 @@
+---
+title: "bayesAssist Vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{bayesAssist-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(bayesAssist)
+```
+
+# Variable Selection
+
+The process of variable selection is a valuable tool for the statistician who wants to determine whether a relationship exists between two structures. Essentially, a model is constructed such that some linear combination of a set of covariates (denoted as $x_1, x_2, … , x_n$) is hypothesized to have a relationship (denoted by $\beta_1, \beta_2, … , \beta_n$) with some given response variable (denoted as y):
+$\beta_0 + \beta_1x_1 + \beta_2x_2 + ...+\beta_nx_n + \epsilon = y$ where $\epsilon \sim N(0, \sigma^2)$
+Variable selection, specifically, is the the selection of a subset of the potential covariates ($x_1, x_2, … , x_n$) that has a relationship with y (in other words, the subset of $\beta_1, \beta_2, … , \beta_n$ in the formulation above that is non-zero). This technique can be applied in a variety of practical settings from determining the major causes of climate change to predicting the next financial downturn. It can even be applied when a linear formulation isn’t particularly intuitive; for example, the technique can actually be used to create graphs. Whether or not there is an edge between two nodes (denoted i and j) will cause covariate, $x_{ij}$ to be non-zero or zero, respectively, and the weight of the would then be denoted by $\beta_{ij}$. 
+
+# Bayesian Variable Selection
+Currently, there are two major schools of thought regarding how to approach the variable selection problem: the frequentist and the Bayesian paradigms. While the frequentist perspective assumes that a given regression problem has specific fixed parameter values corresponding to each of the covariates, the Bayesian approach does not assume that each parameter has such a fixed value. Rather, it is assumed that each covariate’s parameter is an observation from some unique distribution with its own parameter values (Hoffman 2009). Thus, each estimate for the variable selection parameter values is associated with some “posterior probability” that denotes the probability associated with that particular estimate for the regression parameters occurring. This approach is quite different from the framework with which the frequentist approaches estimation problems with, but we believe that there is much merit to such an approach. Particularly, there are specific applications where the Bayesian framework is able to provide an improvement to the accuracy of variable selection - such as the inclusion of prior knowledge/ background information - that the frequentist framework is unable to provide. When attempting to make conclusions regarding a population characteristic, having multiple sources of information (i.e. the data and prior beliefs) can provide nuanced insights that one source may not be able to provide. 
+
+Bayesian variable selection methods are particularly powerful in their ability to provide probabilities associated with not only the marginal incorporation of individual predictors but also for the decision-making process when considering different models in their entirety. In addition, it gives the user the opportunity to average multiple models that also incorporate prior information, which has potential to provide more nuanced predictions. There’s even a capability to widen potential applications through stochastic variable selection (George 1997). However, the selection of the appropriate prior for a particular situation is often cited as one of the main drawbacks of the approach (van de Schoot 2021). This is why simplifying this decision-making process is one of our major motivations (Reich). Thus, the purpose of the construction of our R package, bayesAssist, is to improve both the suitability of and ease with which users select their Bayesian variable selection method and prior in order to conduct variable selection analysis. 
+
+
+
