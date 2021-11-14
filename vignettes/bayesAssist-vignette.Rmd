@@ -29,5 +29,18 @@ Currently, there are two major schools of thought regarding how to approach the 
 
 Bayesian variable selection methods are particularly powerful in their ability to provide probabilities associated with not only the marginal incorporation of individual predictors but also for the decision-making process when considering different models in their entirety. In addition, it gives the user the opportunity to average multiple models that also incorporate prior information, which has potential to provide more nuanced predictions. There’s even a capability to widen potential applications through stochastic variable selection (George 1997). However, the selection of the appropriate prior for a particular situation is often cited as one of the main drawbacks of the approach (van de Schoot 2021). This is why simplifying this decision-making process is one of our major motivations (Reich). Thus, the purpose of the construction of our R package, bayesAssist, is to improve both the suitability of and ease with which users select their Bayesian variable selection method and prior in order to conduct variable selection analysis. 
 
+# Bayesian Variable Selection Method Classes
+1. Bayes Factor
++ Calculate a Bayesian probability for every possible model relative to the “null” model
+- Given p predictors, we have 2p possible models
+
+2. Continuous Shrinkage
++ Assumes relatively “tame” prior free of major spikes/ point masses - it’s much like the Spike-and-Slab without the Spike. 
++ Example priors for this approach are horseshoe, LASSO (Laplaace approximation), and Ridge
+
+3. Spike & Slab
++ A Bayesian variable selection approach that assumes a mixture distribution on the prior that includes a spiked distribution and a more flat distribution
++ It performs best when the user is interested in which predictors are important and has some knowledge of the level of sparsity
+
 
 
