@@ -1,5 +1,5 @@
 ---
-title: "bayesAssist Vignette"
+title: "bayesAssist-vignette"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{bayesAssist-vignette}
@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(bayesAssist)
+# library(bayesAssist)
 ```
 
 # Variable Selection
@@ -41,6 +41,17 @@ Bayesian variable selection methods are particularly powerful in their ability t
 3. Spike & Slab
 + A Bayesian variable selection approach that assumes a mixture distribution on the prior that includes a spiked distribution and a more flat distribution
 + It performs best when the user is interested in which predictors are important and has some knowledge of the level of sparsity
+
+![Figure 1: bayesAssist Package Tree](STAT 450 Package Tree (1).png)
+
+Figure 1 depicts a decision tree of the three Bayesian variable selection approaches along with summaries of the decision-making process for each as described above. This will be the overarching main command when using the bayesAssist package. The output of this main command will direct the user to one of the other commands within bayesAssist such that the user can further develop their analysis. 
+
+The value of bayesAssist will be in simplifying this complicated decision-making process such that a user can provide their data along with their basic goals and background for analysis in order to ultimately receive an optimal method(s) along with corresponding prior hyperparameter values. 
+
+The following sections provide further detail regarding each of the specific commands offered by bayesAssist by providing a description of each, their associated decision trees as well as additional information regarding the code implementation and examples. 
+
+
+
 
 
 
