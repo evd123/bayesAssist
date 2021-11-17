@@ -1,22 +1,22 @@
 require(BoomSpikeSlab)
 
 spikeAndSlab <- function(design_matrix = NULL, # predictors and design_matrix are the same thing just in different formats
-                           predictors = NULL,
-                           xdim = dim(design_matrix),
-                           response = NULL,
-                           expected.r2 = .5,
-                           prior.df = .01,
-                           expected_percent_nonzero = 1,
-                           zellner_g = FALSE,
-                           p = 100,
-                           prior.information.weight = .01,
-                           diagonal.shrinkage = .5,
-                           optional.coefficient.estimate = NULL,
-                           max.flips = -1,
-                           prior.inclusion.probabilities = NULL,
-                           mean.y = mean(response, na.rm = TRUE),
-                           sdy = sd(as.numeric(response), na.rm = TRUE),
-                           sigma.upper.limit = Inf) {
+                         predictors = NULL,
+                         xdim = dim(design_matrix),
+                         response = NULL,
+                         expected.r2 = .5,
+                         prior.df = .01,
+                         expected_percent_nonzero = 1,
+                         zellner_g = FALSE,
+                         p = 100,
+                         prior.information.weight = .01,
+                         diagonal.shrinkage = .5,
+                         optional.coefficient.estimate = NULL,
+                         max.flips = -1,
+                         prior.inclusion.probabilities = NULL,
+                         mean.y = mean(response, na.rm = TRUE),
+                         sdy = sd(as.numeric(response), na.rm = TRUE),
+                         sigma.upper.limit = Inf) {
   if (!is.null(predictors) && is.null(design_matrix) && !zellner_g && !is.null(xdim)) { # don't need to update xdim at this step b/c we will use else case (line 63)
     design_matrix <- model.matrix(predictors)
   }
@@ -56,7 +56,7 @@ spikeAndSlab <- function(design_matrix = NULL, # predictors and design_matrix ar
                               sigma.upper.limit = sigma.upper.limit)
       prior
       # fit the model
-      fit <- lm.spike(y~x-1, niter = 1000, prior = prior)
+      fit <- lm.spike(response~design_matrix-1, niter = 1000, prior = prior)
       fit
       return(list(prior, fit))
     }
@@ -78,7 +78,7 @@ spikeAndSlab <- function(design_matrix = NULL, # predictors and design_matrix ar
                             sigma.upper.limit = sigma.upper.limit)
     prior
     # fit the model
-    fit <- lm.spike(y~x-1, niter = 1000, prior = prior)
+    fit <- lm.spike(response~design_matrix-1, niter = 1000, prior = prior)
     fit
     return(list(prior, fit))
   }
