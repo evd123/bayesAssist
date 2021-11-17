@@ -2,7 +2,7 @@ library(bayesreg)
 library(horseshoe)
 library(Hmisc)
 
-continuous_shrinkage <- function(
+continuousShrinkage <- function(
   data, response, no_prior_information = FALSE,
   desired_sparsity = NULL, desired_prior_effect = NULL,
   covariate_probabilities = NULL,

@@ -2,7 +2,7 @@ library(BayesFactor)
 library(BayesVarSel)
 library(ggm)
 
-bayes_factor <- function(data, response, no_prior_information = FALSE,
+bayesFactor <- function(data, response, no_prior_information = FALSE,
                          desired_sparsity = NULL, desired_prior_effect = NULL,
                          covariate_probabilities = NULL,
                          predict = FALSE, range_false_predicts = 10,

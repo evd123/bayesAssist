@@ -1,6 +1,6 @@
 require(BoomSpikeSlab)
 
-spike_and_slab <- function(design_matrix = NULL, # predictors and design_matrix are the same thing just in different formats
+spikeAndSlab <- function(design_matrix = NULL, # predictors and design_matrix are the same thing just in different formats
                            predictors = NULL,
                            xdim = dim(design_matrix),
                            response = NULL,
